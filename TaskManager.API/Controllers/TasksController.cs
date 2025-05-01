@@ -18,49 +18,91 @@ namespace TaskManager.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateTask createTask)
         {
-            var result = await _taskService.Create(createTask);
+            try
+            {
+                var result = await _taskService.Create(createTask);
 
-            return CreatedAtAction(nameof(GetById), new { id = result.Data.Id }, result.Data);
+                return CreatedAtAction(nameof(GetById), new { id = result.Data.Id }, result.Data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Ocorreu um erro ao criar a tarefa.", Details = ex.Message });
+            }
         }
 
         [HttpPatch("{id}")]
         public async Task<IActionResult> UpdateStatus(Guid id, UpdateStatusTask updateStatusTask)
         {
-            updateStatusTask.Id = id;
-            var result = await _taskService.UpdateStatus(updateStatusTask);
-            if (!result.IsSuccess)
+            try
             {
-                return NotFound(result);
-            }
 
-            return NoContent();
+                updateStatusTask.Id = id;
+                var result = await _taskService.UpdateStatus(updateStatusTask);
+                if (!result.IsSuccess)
+                {
+                    return NotFound(result);
+                }
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Ocorreu um erro ao criar a tarefa.", Details = ex.Message });
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var result = await _taskService.GetById(id);
+            try
+            {
+                var result = await _taskService.GetById(id);
+                if (!result.IsSuccess)
+                {
+                    return NotFound(result);
+                }
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Ocorreu um erro ao criar a tarefa.", Details = ex.Message });
+            }
 
-            return Ok(result);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var tasksViewModel = _taskService.GetAll();
-            return Ok(tasksViewModel);
+            try
+            {
+                var tasksViewModel = _taskService.GetAll();
+                return Ok(tasksViewModel);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Ocorreu um erro ao criar a tarefa.", Details = ex.Message });
+            }
         }
 
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var result = await _taskService.Delete(id);
-            if (!result.IsSuccess)
+            try
             {
-                return BadRequest(result);
+                var result = await _taskService.Delete(id);
+                if (!result.IsSuccess)
+                {
+                    return NotFound(result);
+                }
+                return NoContent();
             }
-            return NoContent();
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Ocorreu um erro ao criar a tarefa.", Details = ex.Message });
+            }
+
         }
     }
 }
