@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
 using TaskManager.Core.Interfaces;
 using TaskManager.Infrastructure.Database;
 
 namespace TaskManager.Infrastructure.Repositories
 {
+    [ExcludeFromCodeCoverage]
     public class UnitOfWork : IUnitOFWork
     {
         private TaskRepository _taskRepository;

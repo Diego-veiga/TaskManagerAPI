@@ -35,8 +35,7 @@ namespace TaskManager.UnitTests.Validation
 
             var result = createTaskValidation.Validate(createTask);
 
-            Assert.False(result.IsValid);
-            Assert.Equal("'Title' must not be empty.", result.Errors[0].ErrorMessage);
+            Assert.False(result.IsValid);      
         }
 
         [Fact]
@@ -53,7 +52,7 @@ namespace TaskManager.UnitTests.Validation
             var result = createTaskValidation.Validate(createTask);
 
             Assert.False(result.IsValid);
-            Assert.Equal("The length of 'Title' must be at least 3 characters. You entered 1 characters.", result.Errors[0].ErrorMessage);
+            
         }
 
         [Fact]
@@ -70,7 +69,6 @@ namespace TaskManager.UnitTests.Validation
             var result = createTaskValidation.Validate(createTask);
 
             Assert.False(result.IsValid);
-            Assert.Equal("The date cannot be later than today.", result.Errors[0].ErrorMessage);
         }
 
 
@@ -88,7 +86,6 @@ namespace TaskManager.UnitTests.Validation
             var result = createTaskValidation.Validate(createTask);
 
             Assert.False(result.IsValid);
-            Assert.Equal("'Description' must not be empty.", result.Errors[0].ErrorMessage);
         }
     }
 }

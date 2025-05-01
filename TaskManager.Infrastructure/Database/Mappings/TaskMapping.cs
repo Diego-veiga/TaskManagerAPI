@@ -1,11 +1,13 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Diagnostics.CodeAnalysis;
 using TaskManager.Core.Entities;
 
 
 namespace TaskManager.Infrastructure.Database.Mappings
 {
+    [ExcludeFromCodeCoverage]
     public class TaskMapping : IEntityTypeConfiguration<TaskEntity>
     {
         public void Configure(EntityTypeBuilder<TaskEntity> builder)
