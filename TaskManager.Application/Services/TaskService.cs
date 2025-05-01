@@ -47,7 +47,7 @@ namespace TaskManager.Application
                     Title = task.Title,
                     Description = task.Description,
                     Status = task.Status,
-                    ExpectedCompletionDate = task.expectedCompletionDate,
+                    ExpectedCompletionDate = task.ExpectedCompletionDate,
 
                 };
                 tasksViewModel.Add(taskViewModel);
@@ -71,7 +71,7 @@ namespace TaskManager.Application
                 Title = task.Title,
                 Description = task.Description,
                 Status = task.Status,
-                ExpectedCompletionDate = task.expectedCompletionDate,
+                ExpectedCompletionDate = task.ExpectedCompletionDate,
             };
 
 

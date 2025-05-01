@@ -38,6 +38,9 @@ namespace TaskManager.Infrastructure.Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("ExpectedCompletionDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -47,9 +50,6 @@ namespace TaskManager.Infrastructure.Database.Migrations
                         .HasColumnType("nvarchar(25)");
 
                     b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("expectedCompletionDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

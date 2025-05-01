@@ -19,7 +19,7 @@ namespace TaskManager.Infrastructure.Database.Mappings
             builder.Property(t => t.Description)
                     .IsRequired();
 
-            builder.Property(t => t.expectedCompletionDate)
+            builder.Property(t => t.ExpectedCompletionDate)
                     .IsRequired();
 
             builder.Property(t => t.Status)
