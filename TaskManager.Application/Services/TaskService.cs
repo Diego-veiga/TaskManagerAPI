@@ -2,6 +2,7 @@
 using TaskManager.Application.Interface;
 using TaskManager.Core.Interfaces;
 using TaskManager.Core.Entities;
+using TaskManager.Application.Mappers;
 
 namespace TaskManager.Application
 {
@@ -38,24 +39,21 @@ namespace TaskManager.Application
 
         public ResultViewModel<List<TaskViewModel>> GetAll()
         {
+            var tasks = _unitOFWork.taskRepository.Get().Where(t => t.Active).ToList();
+            var tasksViewModel = GetListViewModel(tasks);
+            return ResultViewModel<List<TaskViewModel>>.Success(tasksViewModel);
+        }
+
+        private List<TaskViewModel> GetListViewModel(List<TaskEntity> tasks)
+        {
             var tasksViewModel = new List<TaskViewModel>();
-            var tasks = _unitOFWork.taskRepository.Get().Where(t => t.Active);
             foreach (var task in tasks)
             {
-                var taskViewModel = new TaskViewModel()
-                {
-                    Id = task.Id,
-                    Title = task.Title,
-                    Description = task.Description,
-                    Status = task.Status,
-                    ExpectedCompletionDate = task.ExpectedCompletionDate,
-
-                };
+                var taskViewModel = TaskMapper.ToViewModel(task);
                 tasksViewModel.Add(taskViewModel);
             }
-            return ResultViewModel<List<TaskViewModel>>.Success(tasksViewModel);
 
-
+            return tasksViewModel;
         }
 
         public async Task<ResultViewModel> GetById(Guid id)
@@ -66,16 +64,7 @@ namespace TaskManager.Application
                 return ResultViewModel<string>.Error("Task not Found");
             }
 
-            var taskViewModel = new TaskViewModel()
-            {
-                Id = id,
-                Title = task.Title,
-                Description = task.Description,
-                Status = task.Status,
-                ExpectedCompletionDate = task.ExpectedCompletionDate,
-            };
-
-
+            var taskViewModel = TaskMapper.ToViewModel(task);
             return ResultViewModel<TaskViewModel>.Success(taskViewModel);
 
         }
