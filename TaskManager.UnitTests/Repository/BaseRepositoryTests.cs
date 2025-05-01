@@ -12,9 +12,9 @@ namespace TaskManager.UnitTests.Repository
         [Fact]
         public void Add_ShouldAddEntityToDatabase()
         {
+            // Arrange
             var context = new RepositoryTestsHelper().GetInMemoryAppDbContext();
             var repository = new BaseRepository<TaskEntity>(context);
-            // Arrange
             var entity = new TaskEntity("Task01", "Description01", DateTime.Now);
   
 
