@@ -8,7 +8,7 @@ namespace TaskManager.UnitTests.Validation
     public class UpdateStatusTaskValidationTests
     {
         [Fact]
-        public void CreateTaskValidation_ShouldPass_WhenAllFieldsAreValid1()
+        public void UpdateStatusTaskValidation_ShouldPass_WhenAllFieldsAreValid()
         {
             var updateStatusTask = new UpdateStatusTask()
             {
@@ -25,7 +25,7 @@ namespace TaskManager.UnitTests.Validation
         }
 
         [Fact]
-        public void CreateTaskValidation_ShouldFail_WhenTitleIsEmpty2()
+        public void UpdateStatusTaskValidation_ShouldFail_WhenStatusIsInvalid()
         {
            var updateStatusTask = new UpdateStatusTask()
             {
