@@ -1,8 +1,7 @@
-﻿
-using TaskManager.Core.DTOs;
+﻿using TaskManager.Application.DTOs;
 using TaskManager.Core.Entities;
 
-namespace TaskManager.Core.Interfaces
+namespace TaskManager.Application.Interface
 {
     public interface ITaskService
     {

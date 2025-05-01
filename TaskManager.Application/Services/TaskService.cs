@@ -1,6 +1,7 @@
-﻿using TaskManager.Core.DTOs;
-using TaskManager.Core.Entities;
+﻿using TaskManager.Application.DTOs;
+using TaskManager.Application.Interface;
 using TaskManager.Core.Interfaces;
+using TaskManager.Core.Entities;
 
 namespace TaskManager.Application
 {
@@ -31,7 +32,7 @@ namespace TaskManager.Application
             _unitOFWork.taskRepository.Delete(task);
             await _unitOFWork.Commit();
 
-            return ResultViewModel<string>.Success("Task successfully removed");
+            return ResultViewModel.Success();
 
         }
 

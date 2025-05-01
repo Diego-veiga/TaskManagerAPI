@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using TaskManager.Application;
+using TaskManager.Application.Interface;
 using TaskManager.Application.Validations;
 using TaskManager.Core.Interfaces;
 using TaskManager.Infrastructure.Database;
