@@ -10,7 +10,7 @@ namespace TaskManager.Application.Validations
         {
             RuleFor(x => x.Status)
                .Must(valor => Enum.IsDefined(typeof(TaskState), valor))
-               .WithMessage("Status inválido.");
+               .WithMessage("Invalid status. Enter 1 for Pending and 2 for Completed");
         }
     }
 }
