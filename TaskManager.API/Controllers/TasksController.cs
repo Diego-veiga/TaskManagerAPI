@@ -1,7 +1,6 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
-using TaskManager.Core.DTOs;
-using TaskManager.Core.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using TaskManager.Application.DTOs;
+using TaskManager.Application.Interface;
 
 namespace TaskManager.API.Controllers
 {
